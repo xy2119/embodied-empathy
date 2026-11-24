@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Xinyan Ye, Gwyneth Phang, Anandha Gopalan, Abbas Edalat<br>
+  <a href="https://github.com/xy2119">Xinyan Ye</a>, Gwyneth Phang, Anandha Gopalan, Abbas Edalat<br>
   Imperial College London
 </p>
 
