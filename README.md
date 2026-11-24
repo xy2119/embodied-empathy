@@ -18,6 +18,7 @@
   <a href="https://arxiv.org/abs/2608.02283"><img src="https://img.shields.io/badge/arXiv-2608.02283-b31b1b" alt="arXiv"></a>
   <img src="https://img.shields.io/badge/Unity-2022.3%20LTS-black?logo=unity" alt="Unity 2022.3">
   <img src="https://img.shields.io/badge/platform-iOS%20(ARKit)-lightgrey?logo=apple" alt="iOS">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
 </p>
 
 <p align="center">
@@ -178,6 +179,10 @@ arXiv version:
 The app was originally implemented by Gwyneth Phang in [gphang/ar-psychotherapy](https://github.com/gphang/ar-psychotherapy). This repository is the companion code release for the paper.
 
 We thank [AvatarSDK](https://avatarsdk.com/) for MetaPerson, the Empowered Human Foundation, and all study participants. The work was carried out with the Algorithmic Human Development Group at Imperial College London.
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE). This covers only the code and the files in this repository. Third-party assets and services, such as MetaPerson/AvatarSDK, Mixamo, UniWebView, Google Cloud APIs and the fonts and models listed in [`docs/THIRD_PARTY.md`](docs/THIRD_PARTY.md), are governed by their own licences and terms. The paper is published under CC BY 4.0.
 
 ## Contact
 
