@@ -27,6 +27,18 @@
 
 <p align="center"><sub>Child avatar from a photo and therapist choice · Virtual therapy room · AR mode</sub></p>
 
+## Demo video
+
+<p align="center">
+  <a href="https://github.com/xy2119/embodied-empathy/releases/download/v1.0.0/embodied-empathy-demo.mp4">
+    <img src="docs/figures/demo_preview.gif" alt="Preview of the app demo at 2x speed: avatar creation, therapist selection, chatting with emotion mirroring, and AR mode" width="240">
+  </a>
+  <br>
+  <sub>▶ <a href="https://github.com/xy2119/embodied-empathy/releases/download/v1.0.0/embodied-empathy-demo.mp4"><b>Watch the full demo with sound (3 min, MP4)</b></a> · the preview above plays at 2x speed</sub>
+</p>
+
+The demo walks through the full flow: creating the child avatar in MetaPerson Creator, choosing a therapist, chatting in the virtual therapy room while both avatars mirror the detected emotion, and placing the child avatar in the room with AR.
+
 ---
 
 ## Overview
@@ -36,7 +48,7 @@
 - 🧒 **Personalised childhood-self avatar.** Users upload a childhood photo, and [MetaPerson](https://metaperson.avatarsdk.com/) turns it into a customisable 3D child avatar. Avatars are stored as GLB and can be reloaded with an 8-digit share code.
 - 🧑‍⚕️ **Choice of therapist avatar.** Users pick a virtual therapist from a diverse gallery.
 - 🤖 **LLM-driven therapist.** Google **Gemini** is prompted to act as a supportive SAT/SIHP facilitator. It validates, reiterates and labels the user's feelings (mirroring and containment) and recommends exercises.
-- 🎭 **Automated emotion mirroring.** A fine-tuned **RoBERTa** classifier reads each user message. The child avatar mirrors the detected emotion through FACS-style blendshapes and Mixamo body animations, and the therapist shows a calm, regulated empathic response.
+- 🎭 **Automated emotion mirroring.** A fine-tuned **RoBERTa** classifier reads each user message and assigns it to one of **7 emotion categories** (happy, sad, angry, fearful, disgusted, surprised, neutral). The child avatar mirrors the detected emotion through FACS-style blendshapes and Mixamo body animations, and the therapist shows a calm, regulated empathic response.
 - 🗣️ **Voice in and out.** Users can press and hold the mic to speak (Google Speech-to-Text). Every therapist reply is read aloud (Google Text-to-Speech) in a voice matched to the therapist's persona.
 - 📱 **On-demand AR.** Using AR Foundation and ARKit, users can place their childhood self in their own room.
 
@@ -51,7 +63,7 @@ flowchart LR
     STT --> G["Gemini LLM<br/>SAT/SIHP facilitator prompt"]
     G --> R["Reply in chat<br/>+ Google TTS"]
 
-    U -. user text .-> EC["Emotion classifier<br/>RoBERTa · Flask on Cloud Run"]
+    U -. user text .-> EC["Emotion classifier<br/>RoBERTa · 7 emotions<br/>Flask on Cloud Run"]
     EC --> A["Avatar animation<br/>blendshape expressions<br/>+ Mixamo body motion"]
 
     subgraph Dialogue pipeline
@@ -69,6 +81,22 @@ flowchart LR
   <img src="docs/figures/emotion_mirroring.jpg" alt="Three app screenshots: the therapist greets the user; both avatars look happy after a positive message; both look sad after a negative one." width="70%">
   <br><sub>Emotion mirroring: session greeting · positive message · negative message</sub>
 </p>
+
+### Emotion categories and label mapping
+
+The avatars express **7 emotion categories**. The classifier (double fine-tuned RoBERTa; 94.96% accuracy and 95.10% macro-F1 in the paper) predicts 12 fine-grained labels. The app then groups these labels into the 7 categories, and each category has its own facial-expression preset and body animation:
+
+| Emotion category | Classifier labels mapped to it | Child avatar expression | Therapist expression |
+|---|---|---|---|
+| 😊 Happy | `joy`, `love` | `Happy` | `Therapist_Positive` (shares the positive feeling) |
+| 😢 Sad | `sadness`, `disappointment`, `shame`, `guilt` | `Sad` | `Therapist_Empathy` (calm, regulated concern) |
+| 😠 Angry | `anger`, `jealous`, `envy` | `Angry` | `Therapist_Empathy` |
+| 😨 Fearful | `fear`, `instability` | `Fearful` | `Therapist_Empathy` |
+| 🤢 Disgusted | `disgust` | `Disgusted` | `Therapist_Empathy` |
+| 😮 Surprised | (none of the 12 labels yet) | `Suprise` | n/a |
+| 😐 Neutral | default state at session start and between expressions | `Idle` | `Idle` |
+
+The child avatar mirrors the user's emotion directly. The therapist mirrors positive emotions and answers every negative emotion with the same calm empathic expression, as a real therapist would. The mapping is set in the Inspector on the two `FacialSwitcher` components in `ChatbotInteract/ChatbotScene.unity`. Body animations are chosen in `AnimationManager.cs`, and `ActionController.cs` sends each label to both avatars. To change how labels are grouped, reassign the expression assets (`EmotionDisplay/Expressions/*.asset`) on those components.
 
 ## Repository structure
 

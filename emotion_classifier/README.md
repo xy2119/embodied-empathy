@@ -12,7 +12,19 @@ Content-Type: application/json
 → {"emotion": "sadness"}
 ```
 
-The server returns one of 12 labels: `fear`, `love`, `instability`, `disgust`, `disappointment`, `shame`, `anger`, `jealous`, `sadness`, `envy`, `joy`, `guilt`. The Unity app maps each label to a facial-expression preset (`ar-app/Assets/EmotionDisplay/Expressions/`) and a Mixamo animation.
+The avatars use **7 emotion categories**: happy, sad, angry, fearful, disgusted, surprised and neutral. The model returns one of 12 fine-grained labels, and the Unity app groups each label into one of those categories:
+
+| Category | Labels |
+|---|---|
+| Happy | `joy`, `love` |
+| Sad | `sadness`, `disappointment`, `shame`, `guilt` |
+| Angry | `anger`, `jealous`, `envy` |
+| Fearful | `fear`, `instability` |
+| Disgusted | `disgust` |
+| Surprised | (none yet) |
+| Neutral | default idle state |
+
+The full mapping, including how the therapist responds, is in the main [README](../README.md#emotion-categories-and-label-mapping).
 
 ## Model weights
 
