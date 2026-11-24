@@ -75,17 +75,7 @@ The app runs in **Unity**, and emotion recognition runs on **Google Cloud**. Eac
 
 ### Emotion categories and label mapping
 
-The avatars express **7 emotion categories**. The classifier (double fine-tuned RoBERTa; 94.96% accuracy and 95.10% macro-F1 in the paper) predicts 12 fine-grained labels. The app then groups these labels into the 7 categories, and each category has its own facial-expression preset and body animation:
-
-| Emotion category | Classifier labels mapped to it | Child avatar expression | Therapist expression |
-|---|---|---|---|
-| 😊 Happy | `joy`, `love` | `Happy` | `Therapist_Positive` (shares the positive feeling) |
-| 😢 Sad | `sadness`, `disappointment`, `shame`, `guilt` | `Sad` | `Therapist_Empathy` (calm, regulated concern) |
-| 😠 Angry | `anger`, `jealous`, `envy` | `Angry` | `Therapist_Empathy` |
-| 😨 Fearful | `fear`, `instability` | `Fearful` | `Therapist_Empathy` |
-| 🤢 Disgusted | `disgust` | `Disgusted` | `Therapist_Empathy` |
-| 😮 Surprised | (none of the 12 labels yet) | `Suprise` | n/a |
-| 😐 Neutral | default state at session start and between expressions | `Idle` | `Idle` |
+The avatars express **7 emotion categories**. The classifier (double fine-tuned RoBERTa; 94.96% accuracy and 95.10% macro-F1 in the paper) predicts 12 fine-grained labels. The app then groups these labels into the 7 categories, and each category has its own facial-expression preset and body animation.
 
 The child avatar mirrors the user's emotion directly. The therapist mirrors positive emotions and answers every negative emotion with the same calm empathic expression, as a real therapist would. The mapping is set in the Inspector on the two `FacialSwitcher` components in `ChatbotInteract/ChatbotScene.unity`. Body animations are chosen in `AnimationManager.cs`, and `ActionController.cs` sends each label to both avatars. To change how labels are grouped, reassign the expression assets (`EmotionDisplay/Expressions/*.asset`) on those components.
 
