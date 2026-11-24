@@ -1,0 +1,93 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+
+# VS/JetBrains IDEs
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Unity build logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Auto-generated meta
+*.pidb.meta
+*.pdb
+*.mdb
+
+# Unity cache
+MemoryCaptures/
+Logs/
+UserSettings/
+
+# Git housekeeping
+.git/gc.log
+
+# Ignore build artifacts
+/build*
+*.app
+*.apk
+*.ipa
+/build-ios
+
+# Ignore TextMesh Pro Documentations & Examples
+ar-app/Assets/TextMesh Pro
+ar-app/Assets/TextMesh Pro.meta
+
+# Ignore files that are too big: download from Google Drive instead
+emotion_classifier/venv
+emotion_classifier/models
+emotion_classifier/T5_small_emotion.pt
+emotion_classifier/RoBERTa_12_emotions.pt
+ar-app/Assets/AvatarSelector/ChildhoodAvatarGenerate/UniWebView
+
+# api keys
+ar-app/Assets/.env
+ar-app/Assets/Resources/env.txt
+# Unity paths inside ar-app/
+ar-app/[Ll]ibrary/
+ar-app/[Tt]emp/
+ar-app/[Oo]bj/
+ar-app/[Bb]uild*/
+ar-app/[Ll]ogs/
+ar-app/[Uu]serSettings/
+ar-app/*BurstDebugInformation_DoNotShip/
+
+# Third-party assets: download them yourself (see docs/THIRD_PARTY.md)
+ar-app/Assets/3d Objects/
+ar-app/Assets/3d Objects.meta
+ar-app/Assets/Fonts/
+ar-app/Assets/Fonts.meta
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.fbx
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.fbx.meta
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/AnimControllerPlaceHolders/*.fbx
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/AnimControllerPlaceHolders/*.fbx.meta
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.jpg
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.jpg.meta
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.png
+ar-app/Assets/EmotionDisplay/Animations/_Mixamo/*.png.meta
+
+# Model weights
+emotion_classifier/*.pt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

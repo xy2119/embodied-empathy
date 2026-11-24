@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Embodied Empathy"
+repository-code: "https://github.com/xy2119/embodied-empathy"
+authors:
+  - family-names: Ye
+    given-names: Xinyan
+    affiliation: Imperial College London
+  - family-names: Phang
+    given-names: Gwyneth
+    affiliation: Imperial College London
+  - family-names: Gopalan
+    given-names: Anandha
+    affiliation: Imperial College London
+  - family-names: Edalat
+    given-names: Abbas
+    affiliation: Imperial College London
+preferred-citation:
+  type: conference-paper
+  title: "Embodied Empathy: A Multimodal AR and LLM-Powered System for Self-Attachment Psychotherapy with Self-Initiated Humour"
+  authors:
+    - family-names: Ye
+      given-names: Xinyan
+    - family-names: Phang
+      given-names: Gwyneth
+    - family-names: Gopalan
+      given-names: Anandha
+    - family-names: Edalat
+      given-names: Abbas
+  collection-title: "Companion Proceedings of the International Conference on Multimodal Interaction (ICMI Companion '26)"
+  conference:
+    name: "ICMI 2026"
+    city: Napoli
+    country: IT
+  publisher:
+    name: "Association for Computing Machinery"
+  year: 2026
+  doi: "10.1145/3776591.3838179"
+  identifiers:
+    - type: doi
+      value: "10.1145/3776591.3838179"
+    - type: other
+      value: "arXiv:2608.02283"
