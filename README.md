@@ -54,28 +54,19 @@ The demo walks through the full flow: creating the child avatar in MetaPerson Cr
 
 ## System architecture
 
-Every user message runs through two pipelines in parallel:
+### User flow
 
-```mermaid
-flowchart LR
-    U["User<br/>text or voice"] -->|press-and-hold mic| STT["Google<br/>Speech-to-Text"]
-    U -->|typed text| G
-    STT --> G["Gemini LLM<br/>SAT/SIHP facilitator prompt"]
-    G --> R["Reply in chat<br/>+ Google TTS"]
+<p align="center">
+  <img src="docs/figures/user_flow.png" alt="User flow: Start, create childhood avatar, select therapist avatar, share your feelings with the chatbot, child and therapist avatar mirror user emotions, chatbot recommends an appropriate SIHP exercise, then either loop back to sharing feelings or End." width="95%">
+</p>
 
-    U -. user text .-> EC["Emotion classifier<br/>RoBERTa · 7 emotions<br/>Flask on Cloud Run"]
-    EC --> A["Avatar animation<br/>blendshape expressions<br/>+ Mixamo body motion"]
+### System components
 
-    subgraph Dialogue pipeline
-      STT
-      G
-      R
-    end
-    subgraph Emotion pipeline
-      EC
-      A
-    end
-```
+<p align="center">
+  <img src="docs/figures/system_architecture.png" alt="System components: inside Unity are Avatar Display, Chatbot, Emotion Rendering and AR for Childhood Avatar; Avatar Display feeds Emotion Rendering and AR. The Chatbot sends user text to Emotion Recognition on Google Cloud, which returns the emotion to Emotion Rendering." width="70%">
+</p>
+
+The app runs in **Unity**, and emotion recognition runs on **Google Cloud**. Each user message goes to Gemini for the therapist's reply, which is also read aloud with Google TTS. At the same time, the message goes to the cloud-hosted RoBERTa classifier, and the emotion it detects drives the expressions and animations on both avatars.
 
 <p align="center">
   <img src="docs/figures/emotion_mirroring.jpg" alt="Three app screenshots: the therapist greets the user; both avatars look happy after a positive message; both look sad after a negative one." width="70%">
