@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <i> International Conference on Multimodal Interaction (ICMI Companion '26) · Napoli, Italy</i>
+  <i> International Conference on Multimodal Interaction (ICMI Companion '26) </i>
 </p>
 
 <p align="center">
